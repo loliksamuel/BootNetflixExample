@@ -2,13 +2,13 @@
 
 # Spring-boot multi-moudle(include few core-micro-services and  few netflix-support-micro-services) 
 
-## core microservices:
+## microservices-core:
 1. service-auth (@EnableEurekaClient)
 2. service-reservation  (@EnableEurekaClient)
 3. service-reservation-client   (@EnableEurekaClient + @EnableFeignClients + @FeignClient("service-reservation"))
 
 
-## netflix support microservices (run it in this order):
+## microservices-support from netflix opensource(run it in this order):
 1. https://github.com/Netflix/eureka - (@EnableEurekaServer) Service Discovery help find available microservice network location. instances can be registered and clients can discover the instances using Spring-managed beans.
 2. https://spring.io/guides/gs/centralized-configuration - (@EnableConfigServer) spring cloud config
 3. https://github.com/Netflix/archaius - Library for configuration management API
