@@ -7,7 +7,8 @@ open source  (& boot integration) libraries:
 4. https://github.com/Netflix/Hystrix - (@EnableHystrix) Circuit Breaker fault tolerance design pattern and a cool interface called the Hystrix Dashboard 
 5. https://github.com/Netflix/Turbine - (@EnableTurbine) Aggregate streams of Server-Sent Event(SSE) JSON data into a single stream and dashboard.
 6. https://github.com/OpenFeign/feign - (@EnableFeignClients) Feign is a Java to HTTP client binder 
-7. https://github.com/Netflix/archaius - Library for configuration management API
+7. https://github.com/openzipkin/zipkin - Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in microservice architectures.
+8. https://github.com/Netflix/archaius - Library for configuration management API
 
 Slides explaning the projects can be found at: 
 http://www.slideshare.net/IdanFridman/building-bootiful-microservices-cloud
