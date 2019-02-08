@@ -6,9 +6,9 @@ open source  (& boot integration) libraries. run it in this order:
 2. https://spring.io/guides/gs/centralized-configuration - (@EnableConfigServer) spring cloud config
 3. https://github.com/Netflix/archaius - Library for configuration management API
 4. https://github.com/Netflix/zuul - (@EnableZuulProxy) is the front door for all requests from devices and websites to the backend of the   application. As an edge service application, Zuul is built to monitoring, resiliency, security, and dynamic-Intelligent Routing ( api gateway / facade / reverse-proxy)
-5. auth-server (@EnableEurekaClient)
-6. reservation-service  (@EnableEurekaClient)
-7. reservation-client   (@EnableEurekaClient)
+5. service-auth (@EnableEurekaClient)
+6. service-reservation  (@EnableEurekaClient)
+7. service-reservation-client   (@EnableEurekaClient)
 8. https://github.com/Netflix/ribbon - (@RibbonClient) Client Side Load Balancing 
 9. https://github.com/Netflix/Hystrix - (@EnableHystrix, @EnableCircuitBreaker) Circuit Breaker fault tolerance design pattern and a cool interface called the Hystrix Dashboard 
 10. https://github.com/Netflix/Turbine - (@EnableTurbine, @EnableHystrixDashboard) Aggregate streams of Server-Sent Event(SSE) JSON data into a single stream and dashboard for monitoring.
