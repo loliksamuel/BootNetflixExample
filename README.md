@@ -1,9 +1,4 @@
-# BootNetflixExample
-  
-
-hystrix-dashboard -> HystrixDashboardApplication.java Show me
-monitor -> TurbineApplication.java Show me
-zipkin -> ZipkinApplication.java Show me
+# spring-cloud-Netflix-Example
 
 Spring-boot multi-moudle(include few micro-services) with Netflix 
 open source  (& boot integration) libraries. run it in this order:
