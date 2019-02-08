@@ -2,6 +2,12 @@
 
 # Spring-boot multi-moudle(include few core-micro-services and  few netflix-support-micro-services) 
 
+## core microservices:
+1. service-auth (@EnableEurekaClient)
+2. service-reservation  (@EnableEurekaClient)
+3. service-reservation-client   (@EnableEurekaClient + @EnableFeignClients + @FeignClient("service-reservation"))
+
+
 ## netflix support microservices (run it in this order):
 1. https://github.com/Netflix/eureka - (@EnableEurekaServer) Service Discovery help find available microservice network location. instances can be registered and clients can discover the instances using Spring-managed beans.
 2. https://spring.io/guides/gs/centralized-configuration - (@EnableConfigServer) spring cloud config
@@ -11,11 +17,6 @@
 6. https://github.com/Netflix/Hystrix - (@EnableHystrix, @EnableCircuitBreaker) Circuit Breaker fault tolerance design pattern and a cool interface called the Hystrix Dashboard 
 7. https://github.com/Netflix/Turbine - (@EnableTurbine, @EnableHystrixDashboard) Aggregate streams of Server-Sent Event(SSE) JSON data into a single stream and dashboard for monitoring.
 8. https://github.com/openzipkin/zipkin - (@EnableZipkinServer) Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in microservice architectures.
-
-## core microservices:
-1. service-auth (@EnableEurekaClient)
-2. service-reservation  (@EnableEurekaClient)
-3. service-reservation-client   (@EnableEurekaClient + @EnableFeignClients + @FeignClient("service-reservation"))
 
 ## see Feign:
 https://github.com/OpenFeign/feign - (@EnableFeignClients) Feign is a Java to HTTP client binder 
