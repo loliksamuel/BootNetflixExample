@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.2.3.RELEASE'
+        springBootVersion = '2.1.2.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -11,32 +11,29 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-jar {
-    baseName = 'discovery-server'
-    version = '0.0.1-SNAPSHOT'
-}
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+ext {
+    set('springCloudVersion', 'Greenwich.RELEASE')
 }
 
 dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
 
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile('org.springframework.cloud:spring-cloud-starter-eureka-server:1.0.1.RELEASE') {
-        exclude(module: 'servlet-api') // Drags in an old 2.5 spec...
-    }
-    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }

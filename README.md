@@ -1,6 +1,6 @@
 # BootNetflixExample
-Spring boot multimoudle includes Netflix 
-Library examples(Eureka, Hystrix, Turbine and more)
+Spring boot multi module includes Netflix 
+Library examples(Eureka, Hystrix, Turbine , ribbon, zuul)
 
 Slides explaning the projects can be found at: 
 

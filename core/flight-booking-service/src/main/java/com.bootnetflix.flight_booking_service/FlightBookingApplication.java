@@ -1,4 +1,4 @@
-package com.bootnetflix.flight_booking_service.main;
+package com.bootnetflix.flight_booking_service;
 
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
  * Created by idan on 5/18/15.
  */
 @SpringBootApplication
-@ComponentScan("com.bootnetflix")
 @EnableDiscoveryClient
 public class FlightBookingApplication {
 
