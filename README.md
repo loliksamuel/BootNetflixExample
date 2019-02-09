@@ -1,6 +1,7 @@
 # spring-cloud-Netflix-microservices-example
+###### tutorial http://samchu.logdown.com/posts/313414-microservice-with-springcloud
 
-# Spring-boot multi-moudle(include few core-micro-services and  few netflix-support-micro-services) 
+## Spring-boot multi-moudle(include few core-micro-services and  few netflix-support-micro-services) 
 
 ## microservices-core:
 1. service-auth (@EnableEurekaClient)
@@ -17,6 +18,8 @@
 6. https://github.com/Netflix/Hystrix - (@EnableHystrix, @EnableCircuitBreaker) Circuit Breaker fault tolerance design pattern and a cool interface called the Hystrix Dashboard 
 7. https://github.com/Netflix/Turbine - (@EnableTurbine, @EnableHystrixDashboard) Aggregate streams of Server-Sent Event(SSE) JSON data into a single stream and dashboard for monitoring.
 8. https://github.com/openzipkin/zipkin - (@EnableZipkinServer) Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in microservice architectures.
+
+![hystrix_monitor](https://raw.githubusercontent.com/whoooami/spring-cloud-microservice-world/master/images/localhost_8010_hystrix_monitor.png)
 
 ## see Feign:
 https://github.com/OpenFeign/feign - (@EnableFeignClients) Feign is a Java to HTTP client binder 
