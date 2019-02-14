@@ -1,3 +1,6 @@
+server:
+  port: 8765
+  
 info:
   component: Zuul Server
 
@@ -16,10 +19,29 @@ zuul:
       path: /coupon/**
       stripPrefix: false
 
-server:
-  port: 8765
+
 
 logging:
   level:
     ROOT: INFO
     org.springframework.web: INFO
+    
+    
+    
+# # in order to forward Authorization, Cookie and Set-Cookie you need to remove sensitive headers
+# #zuul.sensitiveHeaders=Cookie,Set-Cookie
+# zuul.sensitiveHeaders=
+
+# zuul.host.socket-timeout-millis=60000
+# zuul.host.connect-timeout-millis=60000
+
+
+
+# endpoints.enabled=false
+# endpoints.health.enabled=true
+# endpoints.actuator.enabled=false
+# endpoints.metrics.enabled=false
+
+# management.security.enabled=true
+# management.context-path=/manage
+
