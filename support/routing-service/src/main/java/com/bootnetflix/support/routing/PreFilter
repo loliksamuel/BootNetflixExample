@@ -1,0 +1,98 @@
+
+import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.constants.ZuulHeaders;
+import com.netflix.zuul.context.RequestContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
+
+@Component
+public class PreFilter extends ZuulFilter {
+
+    private static Logger log = LoggerFactory.getLogger(PreDecorationFilter2.class);
+
+    @Override
+    public String filterType() {
+        return "pre";
+    }
+
+    @Override
+    public int filterOrder() {
+        return 6;
+    }
+
+    @Override
+    public boolean shouldFilter() {
+        return true;
+    }
+
+    @Override
+    public Object run() {
+        log.debug("run()");
+
+
+        RequestContext ctx = RequestContext.getCurrentContext();
+
+        log.debug(String.format("run() Before filter ['%s': '%s', '%s': '%s', '%s': '%s']",
+                "X-Forwarded-Host",
+                ctx.getZuulRequestHeaders().get("x-forwarded-host"),
+                ZuulHeaders.X_FORWARDED_PROTO.toLowerCase(),
+                ctx.getZuulRequestHeaders().get(ZuulHeaders.X_FORWARDED_PROTO.toLowerCase()),
+                "X-Forwarded-Port",
+                ctx.getZuulRequestHeaders().get("x-forwarded-port")));
+
+
+        HttpServletRequest request = ctx.getRequest();
+
+        String origHost = request.getHeader("x-forwarded-host");
+        String origProtocol = request.getHeader("X-Forwarded-Proto");
+        String origPort = request.getHeader("X-Forwarded-Port");
+        log.info("run() original headers: origProtocol={}, origPort={}, origHost={}",origProtocol,origPort,origHost);
+
+
+
+
+
+//        final String originalXForwardedProto = ctx.getRequest().getHeader(ZuulHeaders.X_FORWARDED_PROTO.toLowerCase());
+//        final String originalXForwardedPort = ctx.getRequest().getHeader("x-forwarded-port");
+//        final String host = ctx.getRequest().getHeader("host");
+//
+//        log.info("originalXForwardedProto={}, originalXForwardedPort={}, host={}",originalXForwardedProto,originalXForwardedPort,host);
+
+//        if (!StringUtils.isEmpty(host)) {
+//            ctx.addZuulRequestHeader(ZuulHeaders.X_FORWARDED_PROTO.toLowerCase(), originalXForwardedProto);
+//            ctx.getZuulRequestHeaders().put(ZuulHeaders.X_FORWARDED_PROTO,originalXForwardedProto);
+//        }
+
+        if (!StringUtils.isEmpty(origProtocol)) {
+            ctx.getZuulRequestHeaders().put("setoo-marker","1");
+            ctx.getZuulRequestHeaders().put(ZuulHeaders.X_FORWARDED_PROTO.toLowerCase(), origProtocol);
+            ctx.getZuulRequestHeaders().put("original-"+ZuulHeaders.X_FORWARDED_PROTO.toLowerCase(), origProtocol);
+        }
+        if (!StringUtils.isEmpty(origPort)) {
+            ctx.getZuulRequestHeaders().put("setoo-marker","1");
+            ctx.getZuulRequestHeaders().put("x-forwarded-port",origPort);
+            ctx.getZuulRequestHeaders().put("original-x-forwarded-port",origPort);
+        }
+        if (!StringUtils.isEmpty(origHost)) {
+            ctx.getZuulRequestHeaders().put("setoo-marker","1");
+//            ctx.getZuulRequestHeaders().put("x-forwarded-port",origPort);
+            ctx.getZuulRequestHeaders().put("original-x-forwarded-host",origHost);
+        }
+
+
+        log.debug(String.format("run() After filter ['%s': '%s', '%s': '%s', '%s': '%s']",
+                "X-Forwarded-Host",
+                ctx.getZuulRequestHeaders().get("x-forwarded-host"),
+                ZuulHeaders.X_FORWARDED_PROTO.toLowerCase(),
+                ctx.getZuulRequestHeaders().get(ZuulHeaders.X_FORWARDED_PROTO.toLowerCase()),
+                "X-Forwarded-Port",
+                ctx.getZuulRequestHeaders().get("x-forwarded-port")));
+
+        return null;
+    }
+
+}
